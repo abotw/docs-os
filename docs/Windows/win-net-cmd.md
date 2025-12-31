@@ -1,4 +1,4 @@
-# Windows Common Network Commands
+# Net Cmd
 
 ## 1. How to Open the Terminal
 

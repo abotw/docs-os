@@ -1,4 +1,4 @@
-# Windows Firewall for Beginners
+# Firewall
 
 *(with PowerShell examples)*
 
