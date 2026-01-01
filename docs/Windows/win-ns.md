@@ -264,4 +264,4 @@ netsh winsock reset
 -   Uses **context-based commands**
 -   `interface` → IP, DNS, NIC management
 -   `portproxy` → TCP port forwarding
--   Still widely used in **servers, labs, WSL, and legacy environments
+-   Still widely used in servers, labs, WSL, and legacy environments

@@ -1,6 +1,6 @@
 site_name: OS Docs
-site_url: http://abotw.github.io/Docs-OS
-repo_url: https://github.com/abotw/Docs-OS
+site_url: http://abotw.github.io/docs-os
+repo_url: https://github.com/abotw/docs-os
 theme:
   name: material
   features:
