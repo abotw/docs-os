@@ -1,0 +1,2666 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="http://abotw.github.io/docs-os/pios/pios-01-intro/">
+      
+      
+        <link rel="prev" href="../../openwrt/opkg/">
+      
+      
+        <link rel="next" href="../pios-vnc/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Raspberry Pi OS - OS Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#raspberry-pi-os" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="OS Docs" class="md-header__button md-logo" aria-label="OS Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            OS Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Raspberry Pi OS
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/abotw/docs-os" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="OS Docs" class="md-nav__button md-logo" aria-label="OS Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    OS Docs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/abotw/docs-os" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OS Docs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CentOS
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    CentOS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CentOS/centos-01-intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CentOS-01: Intro
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CentOS/centos-02-yum/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CentOS-02: YUM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CentOS/centos-03-rpm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    rpm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CentOS/centos-04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    profile.d
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CentOS/centos-notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CentOS Notes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CentOS/net-01-intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CentOS: Net
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CentOS/net-02-eth33/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CentOS: ens33
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CentOS/net-03-hosts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CentOS: Hosts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Yum
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Yum
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CentOS/yum/RPM-and-yum/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RPM &amp; yum
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Misc
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Misc
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Misc/shell-proxy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Shell Proxy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Misc/xdg/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    XDG on Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ubuntu
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Ubuntu
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Ubuntu/ubuntu-01-intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ubuntu-01: Intro
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Ubuntu/ubuntu-centos-debian/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ubuntu vs CentOS vs Debian
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Ubuntu/ubuntu-vm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ubuntu: VM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Windows
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Windows
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Windows/win-firewall/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Firewall
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Windows/win-net-cmd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Net Cmd
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Windows/win-ns/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    netsh
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Windows/wsl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WSL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Asahi
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Asahi
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../asahi/asahi-linux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Asahi Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    macOS
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    macOS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../macOS/apps/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    macOS apps
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../macOS/config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Config
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../macOS/net-01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Net 01
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../macOS/pbcopy%2Bpbpaste/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    pbcopy &amp; pbpaste
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../macOS/shell/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    macOS Shell
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Openwrt
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Openwrt
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../openwrt/breed/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Breed
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../openwrt/immortalwrt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ImmortalWrt
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--done"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../openwrt/openwrt-00/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 0A14.12 14.12 0 0 0 1.994 4.154L3.689 5.85A11.72 11.72 0 0 1 12 2.41a11.72 11.72 0 0 1 8.311 3.44l1.696-1.696A14.12 14.12 0 0 0 12 0zm0 4.32a9.8 9.8 0 0 0-6.947 2.893l1.695 1.695A7.41 7.41 0 0 1 12 6.73c2.043 0 3.905.832 5.252 2.178l1.695-1.695A9.81 9.81 0 0 0 12 4.32M4.272 8.076A9.76 9.76 0 0 0 2.16 14.16C2.16 19.58 6.582 24 12 24s9.84-4.42 9.84-9.84a9.86 9.86 0 0 0-2.111-6.084L18.016 9.79a7.4 7.4 0 0 1 1.43 4.371c0 4.105-3.34 7.448-7.446 7.448s-7.447-3.342-7.447-7.448c0-1.628.531-3.141 1.43-4.37zM12 8.643a5.56 5.56 0 0 0-3.906 1.613l1.695 1.695a3.13 3.13 0 0 1 4.422 0l1.695-1.695A5.5 5.5 0 0 0 12 8.643m0 3.888a1.629 1.629 0 1 0 0 3.258 1.629 1.629 0 0 0 0-3.258"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenWrt: Notes
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--done"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../openwrt/openwrt-01/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 0A14.12 14.12 0 0 0 1.994 4.154L3.689 5.85A11.72 11.72 0 0 1 12 2.41a11.72 11.72 0 0 1 8.311 3.44l1.696-1.696A14.12 14.12 0 0 0 12 0zm0 4.32a9.8 9.8 0 0 0-6.947 2.893l1.695 1.695A7.41 7.41 0 0 1 12 6.73c2.043 0 3.905.832 5.252 2.178l1.695-1.695A9.81 9.81 0 0 0 12 4.32M4.272 8.076A9.76 9.76 0 0 0 2.16 14.16C2.16 19.58 6.582 24 12 24s9.84-4.42 9.84-9.84a9.86 9.86 0 0 0-2.111-6.084L18.016 9.79a7.4 7.4 0 0 1 1.43 4.371c0 4.105-3.34 7.448-7.446 7.448s-7.447-3.342-7.447-7.448c0-1.628.531-3.141 1.43-4.37zM12 8.643a5.56 5.56 0 0 0-3.906 1.613l1.695 1.695a3.13 3.13 0 0 1 4.422 0l1.695-1.695A5.5 5.5 0 0 0 12 8.643m0 3.888a1.629 1.629 0 1 0 0 3.258 1.629 1.629 0 0 0 0-3.258"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenWrt
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--done"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../openwrt/openwrt-02-compilation/" class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 0A14.12 14.12 0 0 0 1.994 4.154L3.689 5.85A11.72 11.72 0 0 1 12 2.41a11.72 11.72 0 0 1 8.311 3.44l1.696-1.696A14.12 14.12 0 0 0 12 0zm0 4.32a9.8 9.8 0 0 0-6.947 2.893l1.695 1.695A7.41 7.41 0 0 1 12 6.73c2.043 0 3.905.832 5.252 2.178l1.695-1.695A9.81 9.81 0 0 0 12 4.32M4.272 8.076A9.76 9.76 0 0 0 2.16 14.16C2.16 19.58 6.582 24 12 24s9.84-4.42 9.84-9.84a9.86 9.86 0 0 0-2.111-6.084L18.016 9.79a7.4 7.4 0 0 1 1.43 4.371c0 4.105-3.34 7.448-7.446 7.448s-7.447-3.342-7.447-7.448c0-1.628.531-3.141 1.43-4.37zM12 8.643a5.56 5.56 0 0 0-3.906 1.613l1.695 1.695a3.13 3.13 0 0 1 4.422 0l1.695-1.695A5.5 5.5 0 0 0 12 8.643m0 3.888a1.629 1.629 0 1 0 0 3.258 1.629 1.629 0 0 0 0-3.258"/></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenWrt: Compilation
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--done"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../openwrt/opkg/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    opkg
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--draft"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pios
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Pios
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Raspberry Pi OS
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Raspberry Pi OS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-what-is-raspberry-pi-os" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. What Is Raspberry Pi OS?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-why-choose-raspberry-pi-os" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Why Choose Raspberry Pi OS?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-raspberry-pi-os-editions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Raspberry Pi OS Editions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Raspberry Pi OS Editions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-raspberry-pi-os-64-bit-32-bit-with-desktop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1️⃣ Raspberry Pi OS (64-bit / 32-bit) with Desktop
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-raspberry-pi-os-lite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2️⃣ Raspberry Pi OS Lite
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-raspberry-pi-os-with-desktop-and-recommended-software" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3️⃣ Raspberry Pi OS with Desktop and Recommended Software
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-basic-system-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Basic System Requirements
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-installing-raspberry-pi-os" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Installing Raspberry Pi OS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Installing Raspberry Pi OS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-download-raspberry-pi-imager" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: Download Raspberry Pi Imager
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-flash-the-os" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: Flash the OS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-first-boot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: First Boot
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-the-raspberry-pi-os-desktop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. The Raspberry Pi OS Desktop
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-understanding-the-file-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Understanding the File System
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-using-the-terminal-very-important" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Using the Terminal (Very Important)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-networking-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Networking Basics
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Networking Basics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#check-ip-address" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check IP address
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test network
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable-ssh-remote-login" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enable SSH (remote login)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-programming-on-raspberry-pi-os" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Programming on Raspberry Pi OS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-updating-and-maintaining-the-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Updating and Maintaining the System
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-common-beginner-mistakes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Common Beginner Mistakes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-when-to-use-raspberry-pi-os-lite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. When to Use Raspberry Pi OS Lite
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-raspberry-pi-os-vs-other-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Raspberry Pi OS vs Other Systems
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-next-steps-after-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Next Steps After Installation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pios-vnc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pi OS: VNC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pios-wifi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pi OS: Wireless Network
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-what-is-raspberry-pi-os" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. What Is Raspberry Pi OS?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-why-choose-raspberry-pi-os" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Why Choose Raspberry Pi OS?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-raspberry-pi-os-editions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Raspberry Pi OS Editions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Raspberry Pi OS Editions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-raspberry-pi-os-64-bit-32-bit-with-desktop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1️⃣ Raspberry Pi OS (64-bit / 32-bit) with Desktop
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-raspberry-pi-os-lite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2️⃣ Raspberry Pi OS Lite
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-raspberry-pi-os-with-desktop-and-recommended-software" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3️⃣ Raspberry Pi OS with Desktop and Recommended Software
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-basic-system-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Basic System Requirements
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-installing-raspberry-pi-os" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Installing Raspberry Pi OS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Installing Raspberry Pi OS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-download-raspberry-pi-imager" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: Download Raspberry Pi Imager
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-flash-the-os" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: Flash the OS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-first-boot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: First Boot
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-the-raspberry-pi-os-desktop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. The Raspberry Pi OS Desktop
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-understanding-the-file-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Understanding the File System
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-using-the-terminal-very-important" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Using the Terminal (Very Important)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-networking-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Networking Basics
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Networking Basics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#check-ip-address" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check IP address
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test network
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable-ssh-remote-login" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enable SSH (remote login)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-programming-on-raspberry-pi-os" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Programming on Raspberry Pi OS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-updating-and-maintaining-the-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Updating and Maintaining the System
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-common-beginner-mistakes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Common Beginner Mistakes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-when-to-use-raspberry-pi-os-lite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. When to Use Raspberry Pi OS Lite
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-raspberry-pi-os-vs-other-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Raspberry Pi OS vs Other Systems
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-next-steps-after-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Next Steps After Installation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="raspberry-pi-os">Raspberry Pi OS</h1>
+<h2 id="1-what-is-raspberry-pi-os">1. What Is Raspberry Pi OS?</h2>
+<p><strong>Raspberry Pi OS</strong> (formerly called <em>Raspbian</em>) is the <strong>official operating system</strong> for Raspberry Pi computers.</p>
+<p>It is:</p>
+<ul>
+<li><strong>Free and open-source</strong></li>
+<li><strong>Based on Debian Linux</strong></li>
+<li><strong>Optimized specifically for Raspberry Pi hardware</strong></li>
+<li>Designed for <strong>learning, programming, and everyday use</strong></li>
+</ul>
+<p>If you are new to Raspberry Pi or Linux, <strong>Raspberry Pi OS is the best starting choice</strong>.</p>
+<h2 id="2-why-choose-raspberry-pi-os">2. Why Choose Raspberry Pi OS?</h2>
+<p>For beginners, Raspberry Pi OS is popular because:</p>
+<ul>
+<li>✅ Officially supported by the Raspberry Pi Foundation</li>
+<li>✅ Large community and tutorials</li>
+<li>✅ Lightweight and fast on Pi hardware</li>
+<li>✅ Comes with useful preinstalled tools</li>
+<li>✅ Very stable</li>
+</ul>
+<p>Typical use cases:</p>
+<ul>
+<li>Learning Linux basics</li>
+<li>Programming (Python, C/C++)</li>
+<li>Networking and servers</li>
+<li>Robotics and electronics</li>
+<li>Home projects (NAS, Pi-hole, smart home)</li>
+</ul>
+<h2 id="3-raspberry-pi-os-editions">3. Raspberry Pi OS Editions</h2>
+<p>Raspberry Pi OS comes in <strong>three main versions</strong>:</p>
+<h3 id="1-raspberry-pi-os-64-bit-32-bit-with-desktop">1️⃣ Raspberry Pi OS (64-bit / 32-bit) with Desktop</h3>
+<ul>
+<li>Graphical desktop (similar to Windows/macOS)</li>
+<li>Best for beginners</li>
+<li>Recommended if you use a monitor</li>
+</ul>
+<h3 id="2-raspberry-pi-os-lite">2️⃣ Raspberry Pi OS Lite</h3>
+<ul>
+<li>No graphical interface (command line only)</li>
+<li>Uses less memory</li>
+<li>Ideal for servers and headless setups</li>
+</ul>
+<h3 id="3-raspberry-pi-os-with-desktop-and-recommended-software">3️⃣ Raspberry Pi OS with Desktop and Recommended Software</h3>
+<ul>
+<li>Desktop + many extra apps</li>
+<li>Good for education, but larger size</li>
+</ul>
+<p>👉 <strong>Beginner recommendation:</strong>
+<strong>Raspberry Pi OS (64-bit) with Desktop</strong></p>
+<h2 id="4-basic-system-requirements">4. Basic System Requirements</h2>
+<p>You will need:</p>
+<ul>
+<li>Raspberry Pi (Pi 3, 4, or 5 recommended)</li>
+<li>microSD card (16 GB or larger)</li>
+<li>Power supply</li>
+<li>(Optional) Monitor, keyboard, mouse</li>
+<li>(Optional) Network cable or Wi-Fi</li>
+</ul>
+<h2 id="5-installing-raspberry-pi-os">5. Installing Raspberry Pi OS</h2>
+<h3 id="step-1-download-raspberry-pi-imager">Step 1: Download Raspberry Pi Imager</h3>
+<ul>
+<li>Available for Windows, macOS, and Linux</li>
+<li>Official tool for flashing OS to SD card</li>
+</ul>
+<h3 id="step-2-flash-the-os">Step 2: Flash the OS</h3>
+<ol>
+<li>Insert microSD card into your computer</li>
+<li>Open <strong>Raspberry Pi Imager</strong></li>
+<li>Choose:<ul>
+<li><strong>Device</strong> → your Raspberry Pi model</li>
+<li><strong>OS</strong> → Raspberry Pi OS</li>
+<li><strong>Storage</strong> → your SD card</li>
+</ul>
+</li>
+<li>Click <strong>Write</strong></li>
+</ol>
+<h3 id="step-3-first-boot">Step 3: First Boot</h3>
+<ul>
+<li>Insert the SD card into the Raspberry Pi</li>
+<li>Power it on</li>
+<li>Follow the on-screen setup (language, Wi-Fi, password)</li>
+</ul>
+<h2 id="6-the-raspberry-pi-os-desktop">6. The Raspberry Pi OS Desktop</h2>
+<p>The desktop environment is called <strong>PIXEL</strong>.</p>
+<p>Main components:</p>
+<ul>
+<li><strong>Top panel</strong>: menus, network, sound, clock</li>
+<li><strong>Desktop icons</strong>: Home folder, Trash</li>
+<li><strong>File Manager</strong>: manage files like Finder / Explorer</li>
+<li><strong>Terminal</strong>: command-line interface</li>
+</ul>
+<p>You can use the system fully with the mouse, but <strong>learning the terminal is strongly recommended</strong>.</p>
+<h2 id="7-understanding-the-file-system">7. Understanding the File System</h2>
+<p>Raspberry Pi OS uses a Linux file structure.</p>
+<p>Important directories:</p>
+<ul>
+<li><code>/home/pi</code> or <code>/home/username</code> → your personal files</li>
+<li><code>/etc</code> → system configuration</li>
+<li><code>/usr</code> → installed software</li>
+<li><code>/var</code> → logs and variable data</li>
+</ul>
+<p>Your daily work should stay inside:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>/home/yourname
+</span></code></pre></div>
+<h2 id="8-using-the-terminal-very-important">8. Using the Terminal (Very Important)</h2>
+<p>Open <strong>Terminal</strong> from the menu.</p>
+<p>Common beginner commands:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">pwd</span><span class="w">        </span><span class="c1"># show current directory</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>ls<span class="w">         </span><span class="c1"># list files</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nb">cd</span><span class="w"> </span>folder<span class="w">  </span><span class="c1"># change directory</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>mkdir<span class="w"> </span><span class="nb">test</span><span class="w"> </span><span class="c1"># create folder</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>rm<span class="w"> </span>file<span class="w">    </span><span class="c1"># delete file</span>
+</span></code></pre></div>
+<p>Update the system:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>upgrade
+</span></code></pre></div>
+<p>Install software:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>vim
+</span></code></pre></div>
+<h2 id="9-networking-basics">9. Networking Basics</h2>
+<h3 id="check-ip-address">Check IP address</h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>ip<span class="w"> </span>a
+</span></code></pre></div>
+<h3 id="test-network">Test network</h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>ping<span class="w"> </span>google.com
+</span></code></pre></div>
+<h3 id="enable-ssh-remote-login">Enable SSH (remote login)</h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>sudo<span class="w"> </span>raspi-config
+</span></code></pre></div>
+<ul>
+<li>Interface Options → SSH → Enable</li>
+</ul>
+<p>Then connect from another computer:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>ssh<span class="w"> </span>username@pi_ip_address
+</span></code></pre></div>
+<h2 id="10-programming-on-raspberry-pi-os">10. Programming on Raspberry Pi OS</h2>
+<p>Raspberry Pi OS is great for learning programming.</p>
+<p>Preinstalled or easily available:</p>
+<ul>
+<li><strong>Python</strong> (default language)</li>
+<li><strong>C / C++</strong></li>
+<li><strong>Scratch</strong></li>
+<li><strong>Node.js</strong></li>
+</ul>
+<p>Example Python test:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>python3
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>print<span class="o">(</span><span class="s2">&quot;Hello Raspberry Pi&quot;</span><span class="o">)</span>
+</span></code></pre></div>
+<h2 id="11-updating-and-maintaining-the-system">11. Updating and Maintaining the System</h2>
+<p>Regular maintenance:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>upgrade
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>sudo<span class="w"> </span>reboot
+</span></code></pre></div>
+<p>Check disk usage:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>df<span class="w"> </span>-h
+</span></code></pre></div>
+<h2 id="12-common-beginner-mistakes">12. Common Beginner Mistakes</h2>
+<ul>
+<li>❌ Removing system files with <code>sudo rm</code></li>
+<li>❌ Forgetting passwords</li>
+<li>❌ Using random commands from the internet</li>
+<li>❌ Powering off without shutdown</li>
+</ul>
+<p>Correct shutdown:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>sudo<span class="w"> </span>shutdown<span class="w"> </span>now
+</span></code></pre></div>
+<h2 id="13-when-to-use-raspberry-pi-os-lite">13. When to Use Raspberry Pi OS Lite</h2>
+<p>Choose <strong>Lite</strong> if:</p>
+<ul>
+<li>No monitor is attached</li>
+<li>You only use SSH</li>
+<li>You want better performance</li>
+<li>You build servers or services</li>
+</ul>
+<h2 id="14-raspberry-pi-os-vs-other-systems">14. Raspberry Pi OS vs Other Systems</h2>
+<table>
+<thead>
+<tr>
+<th>System</th>
+<th>Best For</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Raspberry Pi OS</td>
+<td>Beginners, learning</td>
+</tr>
+<tr>
+<td>Ubuntu Server</td>
+<td>Cloud, servers</td>
+</tr>
+<tr>
+<td>Ubuntu Desktop</td>
+<td>Familiar UI</td>
+</tr>
+<tr>
+<td>OpenWrt</td>
+<td>Routers, networking</td>
+</tr>
+<tr>
+<td>RetroPie</td>
+<td>Gaming</td>
+</tr>
+</tbody>
+</table>
+<h2 id="15-next-steps-after-installation">15. Next Steps After Installation</h2>
+<p>Good things to learn next:</p>
+<ul>
+<li>Linux permissions (<code>chmod</code>, <code>chown</code>)</li>
+<li>SSH and SCP</li>
+<li>System services (<code>systemctl</code>)</li>
+<li>Networking basics</li>
+<li>Shell scripting</li>
+</ul>
+<h2 id="summary">Summary</h2>
+<p>Raspberry Pi OS is:</p>
+<ul>
+<li>Beginner-friendly</li>
+<li>Powerful enough for real projects</li>
+<li>A great way to learn Linux and computing</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "search.suggest", "search.highlight"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
