@@ -2,8 +2,6 @@
 
 *A Beginner’s Guide*
 
-------
-
 ## 1. Why So Many Linux Distributions?
 
 Linux is a **kernel**, not a full operating system.
@@ -15,8 +13,6 @@ Different communities and companies build **distributions (distros)** around it 
 -   Update speed
 
 Ubuntu, CentOS, and Debian are three of the most common.
-
-------
 
 ## 2. Quick Overview Table
 
@@ -30,8 +26,6 @@ Ubuntu, CentOS, and Debian are three of the most common.
 | Ease of use       | ⭐⭐⭐⭐⭐                 | ⭐⭐⭐                     | ⭐⭐                       |
 | Server popularity | Very high             | High                    | Very high                |
 
-------
-
 ## 3. Debian: The Foundation
 
 ### 3.1 What Is Debian?
@@ -44,8 +38,6 @@ Ubuntu, CentOS, and Debian are three of the most common.
 
 Many distros are built **on top of Debian**, including Ubuntu.
 
-------
-
 ### 3.2 Debian Release Branches
 
 | Branch   | Description                   |
@@ -55,8 +47,6 @@ Many distros are built **on top of Debian**, including Ubuntu.
 | Unstable | Rolling, developers only      |
 
 👉 Beginners usually use **Stable**.
-
-------
 
 ### 3.3 Pros & Cons of Debian
 
@@ -72,8 +62,6 @@ Many distros are built **on top of Debian**, including Ubuntu.
 -   More manual setup
 -   Less beginner-friendly UI
 
-------
-
 ## 4. Ubuntu: Debian Made Friendly
 
 ### 4.1 What Is Ubuntu?
@@ -86,8 +74,6 @@ Many distros are built **on top of Debian**, including Ubuntu.
 
 It is maintained by **Canonical**.
 
-------
-
 ### 4.2 Why Ubuntu Is Popular
 
 -   Easy installer
@@ -96,8 +82,6 @@ It is maintained by **Canonical**.
 -   Strong documentation
 
 Ubuntu focuses on **usability + stability**.
-
-------
 
 ### 4.3 Ubuntu LTS
 
@@ -109,8 +93,6 @@ Ubuntu’s **LTS (Long Term Support)** releases:
 Example:
 
 -   Ubuntu 22.04 LTS
-
-------
 
 ### 4.4 Pros & Cons of Ubuntu
 
@@ -126,8 +108,6 @@ Example:
 -   Slightly heavier than Debian
 -   Snap packages are controversial
 
-------
-
 ## 5. CentOS: Enterprise Linux Clone
 
 ### 5.1 What Is CentOS?
@@ -139,8 +119,6 @@ It focuses on:
 -   Enterprise stability
 -   Long-term support
 -   Server workloads
-
-------
 
 ### 5.2 CentOS Stream (Important!)
 
@@ -159,8 +137,6 @@ Fedora → CentOS Stream → RHEL
 
 It is **rolling-preview**, not a clone anymore.
 
-------
-
 ### 5.3 Pros & Cons of CentOS
 
 **Pros**
@@ -175,8 +151,6 @@ It is **rolling-preview**, not a clone anymore.
 -   Older software
 -   CentOS Stream may be confusing
 
-------
-
 ## 6. Package Management Comparison
 
 | Distro | Command             |
@@ -190,8 +164,6 @@ Key difference:
 -   Debian/Ubuntu → `.deb`
 -   CentOS/RHEL → `.rpm`
 
-------
-
 ## 7. Configuration Style Differences
 
 | Area         | Ubuntu / Debian          | CentOS              |
@@ -200,8 +172,6 @@ Key difference:
 | Firewall     | `ufw`                    | `firewalld`         |
 | SELinux      | Disabled by default      | Enabled             |
 | Config style | Simple                   | Enterprise-oriented |
-
-------
 
 ## 8. Which One Should You Choose?
 
@@ -214,15 +184,11 @@ Key difference:
 
 ✅ **Best beginner choice**
 
-------
-
 ### 8.2 Choose Debian If:
 
 -   You want maximum stability
 -   You prefer minimal systems
 -   You are comfortable with Linux
-
-------
 
 ### 8.3 Choose CentOS If:
 
@@ -230,16 +196,12 @@ Key difference:
 -   You need RHEL-like environments
 -   You are learning system administration
 
-------
-
 ## 9. Simple Mental Model
 
 ```
 Debian  →  Ubuntu  →  User-friendly Linux
 RHEL    →  CentOS  →  Enterprise Linux
 ```
-
-------
 
 ## 10. Beginner Recommendation
 

@@ -2,7 +2,7 @@
 
 ## 1. What Is Ubuntu?
 
-**Ubuntu** is a popular **Linux operating system** based on **Debian**.
+**Ubuntu** is a popular **Linux OS** based on **Debian**.
 It is:
 
 -   ✅ Free and open-source
@@ -11,8 +11,6 @@ It is:
 -   ✅ Backed by **Canonical**
 
 Ubuntu is often recommended for beginners because it is easy to install, well documented, and has a huge community.
-
-------
 
 ## 2. Ubuntu Editions
 
@@ -39,8 +37,6 @@ Ubuntu comes in several flavors:
 
 👉 **Beginners should always choose LTS**.
 
-------
-
 ## 3. Basic Ubuntu Desktop Layout
 
 On Ubuntu Desktop, you’ll see:
@@ -53,8 +49,6 @@ On Ubuntu Desktop, you’ll see:
 -   **Activities Overview**
     -   Press `Super` (Windows key)
     -   Search apps and files
-
-------
 
 ## 4. Ubuntu File System Basics
 
@@ -72,8 +66,6 @@ Linux does not use drive letters like `C:` or `D:`.
 | `/var`             | Logs, cache, variable data |
 
 👉 Your files live in **`/home/yourname`**.
-
-------
 
 ## 5. Package Management (Very Important)
 
@@ -106,8 +98,6 @@ sudo apt remove git
 -   `sudo` = run as administrator
 -   Ubuntu software comes from **repositories**
 
-------
-
 ## 6. Terminal Basics
 
 The **Terminal** is a powerful tool in Ubuntu.
@@ -134,8 +124,6 @@ Example:
 cd ~/Documents
 ls
 ```
-
-------
 
 ## 7. Users and Permissions
 
@@ -164,8 +152,6 @@ Meaning:
 -   Protects the system
 -   Prevents accidental damage
 
-------
-
 ## 8. Software Installation Methods
 
 Ubuntu supports multiple ways:
@@ -188,8 +174,6 @@ Ubuntu supports multiple ways:
 
 👉 Beginners should prefer **APT or Snap**.
 
-------
-
 ## 9. Networking Basics
 
 ### 9.1 Check IP Address
@@ -197,6 +181,8 @@ Ubuntu supports multiple ways:
 ```bash
 ip a
 ```
+
+-   `a` - all
 
 ### 9.2 Test Network
 
@@ -212,8 +198,6 @@ ssh user@ip_address
 
 Common in servers and Raspberry Pi usage.
 
-------
-
 ## 10. Updating the System (Best Practice)
 
 Regularly run:
@@ -227,8 +211,6 @@ This keeps your system:
 -   Secure
 -   Stable
 -   Bug-free
-
-------
 
 ## 11. Getting Help
 
@@ -250,8 +232,6 @@ ls --help
 -   Ubuntu Wiki
 -   GitHub issues
 
-------
-
 ## 12. Who Should Use Ubuntu?
 
 Ubuntu is great for:
@@ -261,8 +241,6 @@ Ubuntu is great for:
 -   Servers & cloud
 -   Raspberry Pi users
 -   Daily desktop users
-
-------
 
 ## 13. Learning Path Recommendation
 

@@ -6,8 +6,6 @@
 
 Raspberry Pi OS includes **RealVNC Server** by default, so no extra installation is usually needed.
 
-------
-
 ## 2. Prerequisites
 
 Before starting, make sure:
@@ -17,8 +15,6 @@ Before starting, make sure:
 -   You can:
     -   Access the Pi locally (monitor + keyboard), **or**
     -   Log in via SSH
-
-------
 
 ## 3. Enable VNC on Raspberry Pi OS (GUI Method)
 
@@ -36,8 +32,6 @@ Before starting, make sure:
 4.  Click **OK**
 
 ✅ VNC Server is now running.
-
-------
 
 ## 4. Enable VNC via Command Line (SSH / Terminal Method)
 
@@ -65,8 +59,6 @@ sudo raspi-config
 4.  Select **OK**
 5.  Exit
 
-------
-
 ## 5. Verify VNC Service Status
 
 Check whether the VNC server is running:
@@ -87,8 +79,6 @@ If not running, start it manually:
 sudo systemctl enable vncserver-x11-serviced
 sudo systemctl start vncserver-x11-serviced
 ```
-
-------
 
 ## 6. Find Raspberry Pi IP Address
 
@@ -112,8 +102,6 @@ Example output:
 -   Find **DHCP / Connected Devices**
 -   Look for `raspberrypi`
 
-------
-
 ## 7. Connect from Another Computer
 
 ### 7.1 Install VNC Viewer
@@ -127,8 +115,6 @@ Available for:
 -   Windows
 -   macOS
 -   Linux
-
-------
 
 ### 7.2 Connect to Raspberry Pi
 
@@ -151,8 +137,6 @@ Available for:
 
 🎉 You should now see the Raspberry Pi desktop.
 
-------
-
 ## 8. Common Beginner Problems & Fixes
 
 ### Problem 1: Black Screen After Connecting
@@ -168,8 +152,6 @@ Available for:
     ```bash
     sudo reboot
     ```
-
-------
 
 ### Problem 2: Connection Refused
 
@@ -196,8 +178,6 @@ sudo systemctl start vncserver-x11-serviced
     -   Raspberry Pi Configuration → Display → Resolution
 -   Close unnecessary programs
 
-------
-
 ## 9. (Optional) Start VNC Automatically on Boot
 
 Usually enabled by default, but you can confirm:
@@ -205,8 +185,6 @@ Usually enabled by default, but you can confirm:
 ```bash
 sudo systemctl enable vncserver-x11-serviced
 ```
-
-------
 
 ## 10. Security Tips (Important for Beginners)
 
@@ -219,8 +197,6 @@ sudo systemctl enable vncserver-x11-serviced
 -   Do **NOT expose VNC directly to the internet**
 
 -   Use VNC **only in local network**, or via **SSH tunnel**
-
-------
 
 ## 11. Summary
 
